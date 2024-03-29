@@ -1,0 +1,309 @@
+$danger_color: rgb(161, 57, 57);
+$bg-color:#5611ec;
+$btn-color: #5611ec;
+$primary-color:rgb(255, 255, 255);
+$sub-color: rgb(0, 0, 0);
+$post_bg:rgb(255, 255, 255);
+$status_adding: rgb(69, 98, 88);
+$fore-color:rgb(206, 226, 203);
+
+*, *::before, *::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.content{
+    width:100%;
+}
+.btns{
+    display:flex;
+    gap:10px;
+}
+input,textarea{
+    border: none;
+    outline: none;
+    padding:5px;
+    width:100%;
+    font-size:22px;
+}
+label p{
+    font-size:24px;
+}
+//Увеличенный масштаб
+.scaled{
+    position:absolute;
+    max-width:600px;
+    z-index: 3;
+    padding: 15px;
+    background-color: $primary-color;
+    animation:fadeIn 1s forwards;
+    cursor:pointer;
+    top:0;
+    left:0;
+}
+@keyframes fadeIn {
+    100%{
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+html, body {
+    height:100%;
+}
+.App{
+    background: radial-gradient(at 0% 0%, #dd03e4, #5611ec);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+#close{
+    background-color: $danger_color;
+    color:#EEE;
+    cursor:pointer;
+}
+header{
+    display: flex;
+    justify-content: center;
+    background-color: $bg-color;
+    padding: 15px;
+}
+header h1 {
+    color: $primary-color;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+nav>*{
+    background-color: $btn-color;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 10px;
+    color:$primary-color;
+    transition: all .3s ease-in-out;
+}
+nav>*:hover {
+    background-color: $primary-color;
+    color: $sub-color;
+}
+//Все посты
+.posts{
+    max-width: 1200px;
+    margin:10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $post_bg;
+    border-radius: 20px;
+    padding: 15px;
+    gap: 15px;
+    box-shadow: rgba(91, 16, 94, 0.4) 0 2px 6px 0;
+}
+.posts > h1 {
+    margin-top: 10px !important;
+    font-size: 25px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    color: $sub-color !important;
+}
+.post-item{
+    margin:10px;
+    display: flex;
+    flex-direction: column;
+    border:1px solid $sub-color;
+    border-radius: 10px;
+    padding: 15px;
+    cursor:pointer;
+    transition: all .2s ease-in-out;
+}
+.post-item:hover {
+    scale: 0.99;
+}
+.post-item h1{
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.post-item p{
+    word-spacing: 5px;
+    letter-spacing: 1px;
+}
+.btns>*{
+    width:100%;
+    padding:5px;
+    border-radius: 5px;
+    color:$fore-color;
+}
+.change-post{
+    background-color: $bg-color;
+}
+.delete-post{
+    background-color: $danger_color;
+}
+//Поиск постов
+.searching_post{
+    max-width: 1200px;
+    margin:10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $post_bg;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;       
+}
+.searching_post form{
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 15px;
+    box-shadow: -1px -1px 5px $primary-color;
+}
+.searching_post form label{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.searching_post form input[type=text]{
+    border-bottom: 2px solid black;
+}
+.searching_post form input[type=submit]{
+    color: $post_bg;
+    background-color: $status_adding;
+    cursor:pointer;
+}
+//Добавление постов
+.adding_post{
+    max-width: 1200px;
+    margin:10px auto;
+    display: column;
+    flex-direction: column;
+    align-items: center;
+    background-color: $post_bg;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;       
+}
+.adding_post form{
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 15px;
+    box-shadow: -1px -1px 5px $primary-color;
+}
+.adding_post form label{
+    display: flex;
+    flex-direction: column;
+}
+.adding_post form input[type=text]{
+    border-bottom: 2px solid black;
+}
+.adding_post form textarea{
+    border:1px solid black;
+    resize: none;
+}
+.adding_post form input[type=submit]{
+    color: $post_bg;
+    background-color: $status_adding;
+    cursor:pointer;
+}
+.status{
+    color:$status_adding;
+    animation:.8s hide ease-in-out;
+}
+@keyframes hide {
+    from{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to{
+        opacity:0;
+        transform: translateY(-20px);
+    }   
+}
+//Редактирование постов
+.editing_post{
+    max-width: 1200px;
+    margin:10px auto;
+    display: column;
+    flex-direction: column;
+    align-items: center;
+    background-color: $post_bg;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;       
+}
+.editing_post form{
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 15px;
+    box-shadow: -1px -1px 5px $primary-color;
+}
+.editing_post form label{
+    display: flex;
+    flex-direction: column;
+}
+.editing_post form input[type=text]{
+    border-bottom: 2px solid black;
+}
+.editing_post form textarea{
+    border:1px solid black;
+    resize: none;
+}
+.editing_post form input[type=submit]{
+    color: $post_bg;
+    background-color: $status_adding;
+    cursor:pointer;
+}
+
+//Аутентификация
+.auth{
+    max-width: 1200px;
+    margin:10px auto;
+    display: column;
+    flex-direction: column;
+    align-items: center;
+    background-color: $post_bg;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;       
+}
+.auth form{
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 15px;
+    box-shadow: -1px -1px 5px $primary-color;
+}
+.auth form label{
+    display: flex;
+    flex-direction: column;
+}
+.auth form input[type=text]{
+    border-bottom: 2px solid black;
+}
+.auth form textarea{
+    border:1px solid black;
+    resize: none;
+}
+.auth form input[type=submit]{
+    color: $post_bg;
+    background-color: $status_adding;
+    cursor:pointer;
+}
